@@ -1,0 +1,51 @@
+p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.logo {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0);
+}
+
+.ellipse {
+    position: absolute;
+    top: 240px;
+    margin-left: -60px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #000000;
+}
+
+.line {
+    position: absolute;
+    top: 245px;
+    width: 245px;
+    height: 1px;
+    background: #000000;
+    margin-left: -50px;
+}
+
+.footerText {
+    position: absolute;
+    margin-left: -40px;
+    top: 140px;
+    width: 300px;
+    text-align: center;
+}
+
+.square {
+    width: 220px;
+    height: 220px;
+    margin-left: -70px;
+    background: #ffffff;
+}
