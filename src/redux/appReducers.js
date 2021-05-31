@@ -8,7 +8,7 @@ const initState = {
         phone: '',
         birthday: '',
         sex: '',
-        rememberMe: false
+        rememberMe: ''
     },
     valuesForDocument: {}
 }
@@ -30,6 +30,7 @@ const appReducers = (state = initState, action) => {
                 values: newValues,
                 valuesForDocument: newValues
             }
+
 
         default:
             return state

@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './Form.module.css'
 import * as yup from 'yup'
 import {connect} from "react-redux";
 import {useFormik} from 'formik';
 import {createDocument} from "../../redux/actions";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const Form = ({ values, createDocument }) => {
+const Form = ({values, createDocument}) => {
+
+    const [startDate, setStartDate] = useState(new Date());
 
     const validationsSchema = yup.object().shape({
         firstName: yup.string().typeError('Must be only letters').required('Required'),
         lastName: yup.string().typeError('Must be only letters').required('Required'),
         email: yup.string().email('Invalid email format').required('Required'),
-        phone: yup.number().typeError('Invalid phone format').required('Required'),
-        birthday: yup.date().typeError('Invalid date format').required('Required'),
+        phone: yup.number().typeError('Must be only numbers').required('Required'),
         sex: yup.string().required()
     })
 
@@ -20,7 +23,6 @@ const Form = ({ values, createDocument }) => {
     const formik = useFormik({
         initialValues: values,
         onSubmit: values => {
-            console.log(values)
             createDocument(values)
         },
         validationSchema: validationsSchema,
@@ -94,13 +96,11 @@ const Form = ({ values, createDocument }) => {
                     {formik.touched.birthday && formik.errors.birthday &&
                     <div className={style.errors}>{formik.errors.birthday}</div>}
                 </div>
-                <input
-                    className={(formik.touched.birthday && formik.errors.birthday) ? style.incorrectInput : style.input}
-                    name={'birthday'}
-                    type={'text'}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.birthday}
+                <DatePicker
+                    className={style.input}
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    format="DD-MM-YYYY"
                 />
             </div>
             <div className={style.labelInputGroup}>
@@ -140,6 +140,7 @@ const Form = ({ values, createDocument }) => {
                     className={style.checkbox}
                     name={'rememberMe'}
                     type={'checkbox'}
+                    onChange={formik.handleChange}
                 />
             </div>
             <button
