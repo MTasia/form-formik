@@ -1,8 +1,7 @@
 import React from "react";
 import style from "./Header.module.css"
 
-const Header = () => {
-    return (
+const Header = () => (
         <div className={style.headerWrapper}>
             <p className={style.form}>Form</p>
             <div className={style.logo}>
@@ -16,6 +15,5 @@ const Header = () => {
             <p className={style.document}>Document</p>
         </div>
     )
-}
 
 export default Header

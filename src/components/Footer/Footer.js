@@ -1,8 +1,7 @@
 import React from "react";
 import style from "./Footer.module.css";
 
-const Footer = () => {
-    return (
+const Footer = () => (
         <div className={style.logo}>
             <div className={style.ellipse}/>
             <div className={style.line}/>
@@ -13,6 +12,5 @@ const Footer = () => {
             <div className={style.square}/>
         </div>
     )
-}
 
 export default Footer

@@ -1,6 +1,6 @@
-import {CREATE_DOCUMENT} from "./types";
+import {createSlice} from "@reduxjs/toolkit";
 
-const initState = {
+const defaultState = {
     values: {
         firstName: '',
         lastName: '',
@@ -8,14 +8,15 @@ const initState = {
         phone: '',
         birthday: '',
         sex: '',
-        rememberMe: ''
-    },
-    valuesForDocument: {}
+        rememberMe: false
+    }
 }
 
-const appReducers = (state = initState, action) => {
-    switch (action.type) {
-        case (CREATE_DOCUMENT):
+export const formSlicer = createSlice({
+    name: 'form',
+    initialState: defaultState,
+    reducers: {
+        createDocument(state, action) { // fill out state
             const newValues = {
                 firstName: action.payload.firstName,
                 lastName: action.payload.lastName,
@@ -27,14 +28,14 @@ const appReducers = (state = initState, action) => {
             }
             return {
                 ...state,
-                values: newValues,
-                valuesForDocument: newValues
+                values: newValues
             }
-
-
-        default:
-            return state
+        }
     }
-}
+})
 
-export default appReducers
+const { actions, reducer } = formSlicer;
+
+export const {createDocument} = actions
+
+export default reducer

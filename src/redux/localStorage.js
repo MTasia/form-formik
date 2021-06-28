@@ -12,9 +12,14 @@ export const loadState = () => {
 
 export const saveState = (state) => {
     try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('state', serializedState);
+        if (state.formReducer.values.rememberMe) {
+            const serializedState = JSON.stringify(state);
+            localStorage.setItem('state', serializedState);
+        }
+        else {
+            localStorage.removeItem('state')
+        }
     } catch (e) {
-
+        console.log(e)
     }
 }

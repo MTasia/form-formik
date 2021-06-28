@@ -1,12 +1,22 @@
-import { compose, createStore } from 'redux'
-import appReducers from "./appReducers";
-import { loadState } from './localStorage'
+import {configureStore} from "@reduxjs/toolkit";
+import formReducer from "./reducer/formReducer/formSlicer";
+import {loadState, saveState} from './localStorage'
 
-const persistedState = loadState();
-const store = createStore(
-    appReducers,
-    persistedState,
-    compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-)
+const reducer = {
+    formReducer
+}
+
+const preloadedState = loadState();
+
+const store = configureStore({
+    reducer,
+    preloadedState
+})
+
+store.subscribe(() => {
+    saveState({
+        formReducer: store.getState().formReducer
+    })
+})
 
 export default store
