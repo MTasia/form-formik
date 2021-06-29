@@ -6,6 +6,7 @@ import {getValues} from "../../redux/selectors/formSelector";
 
 const Document = ({values}) => (
         <div className={style.document}>
+            {values.firstName !== "" ?
                 <div>
                     <div className={style.headerText}>Your document</div>
                     <div className={style.text}>Name: {values.firstName} {values.lastName}</div>
@@ -13,7 +14,9 @@ const Document = ({values}) => (
                     <div className={style.text}>Phone: {values.phone}</div>
                     <div className={style.text}>Birthday: {values.birthday}</div>
                     <div className={style.text}>Sex: {values.sex}</div>
-                </div>
+                </div> :
+                <div className={style.headerText}>Here will be your document</div>
+            }
         </div>
     )
 
