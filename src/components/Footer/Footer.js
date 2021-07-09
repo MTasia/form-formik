@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Footer.module.css";
 
 const Footer = () => (
-        <div className={style.logo}>
+        <div className={style.root}>
             <div className={style.ellipse}/>
             <div className={style.line}/>
             <p className={style.footerText}>

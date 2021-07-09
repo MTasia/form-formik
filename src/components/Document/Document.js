@@ -8,7 +8,7 @@ const Document = () => {
     const values = useSelector(makeGetValues);
 
     return (
-        <div className={style.document}>
+        <div className={style.root}>
             {values.firstName !== "" ?
                 <div>
                     <div className={style.headerTitle}>Your document</div>

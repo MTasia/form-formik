@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Header.module.css"
 
 const Header = () => (
-            <div>
+            <div className={style.root}>
                 <div className={style.square}/>
                 <div className={style.ellipse}/>
                 <div className={style.line}/>
