@@ -1,2 +1,0 @@
-export const CREATE_DOCUMENT = 'CREATE_DOCUMENT';
-export const CLEAR_ALL = 'CLEAR_ALL'

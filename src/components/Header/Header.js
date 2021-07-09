@@ -2,18 +2,14 @@ import React from "react";
 import style from "./Header.module.css"
 
 const Header = () => (
-        <div className={style.headerWrapper}>
-            <p className={style.form}>Form</p>
-            <div className={style.logo}>
+            <div>
+                <div className={style.square}/>
                 <div className={style.ellipse}/>
                 <div className={style.line}/>
-                <p className={style.headerText}>Fill out the form and
+                <div className={style.headerText}>Fill out the form and
                     your data will appear
-                    in the document</p>
-                <div className={style.square}/>
+                    in the document</div>
             </div>
-            <p className={style.document}>Document</p>
-        </div>
     )
 
 export default Header

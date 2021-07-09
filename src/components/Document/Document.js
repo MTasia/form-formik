@@ -1,30 +1,27 @@
-import {connect} from "react-redux";
-import PropTypes from "prop-types";
+import {useSelector} from "react-redux";
 import style from './Document.module.css'
-import {getValues} from "../../redux/selectors/formSelector";
+import {makeGetValues} from "../../redux/selectors/formSelector";
 
 
-const Document = ({values}) => (
+const Document = () => {
+
+    const values = useSelector(makeGetValues);
+
+    return (
         <div className={style.document}>
             {values.firstName !== "" ?
                 <div>
-                    <div className={style.headerText}>Your document</div>
+                    <div className={style.headerTitle}>Your document</div>
                     <div className={style.text}>Name: {values.firstName} {values.lastName}</div>
                     <div className={style.text}>Email: {values.email}</div>
                     <div className={style.text}>Phone: {values.phone}</div>
                     <div className={style.text}>Birthday: {values.birthday}</div>
                     <div className={style.text}>Sex: {values.sex}</div>
                 </div> :
-                <div className={style.headerText}>Here will be your document</div>
+                <div className={style.headerTitle}>Here will be your document</div>
             }
         </div>
     )
-
-Document.propTypes = {
-    values: PropTypes.objectOf(PropTypes.any)
 }
-const mapStateToProps = (state) => ({
-        values: getValues(state)
-    })
 
-export default connect(mapStateToProps, null)(Document)
+export default Document

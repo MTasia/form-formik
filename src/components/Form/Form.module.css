@@ -1,10 +1,18 @@
-form {
-    width: 460px;
-    height: 900px;
-    margin-left: -4%;
+.form {
     background: #ffffff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 50px 70px 0 70px;
+    position: relative;
+}
+
+.formTitle {
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 23px;
+    color: #000000;
 }
 
 .labelInputGroup {
@@ -17,13 +25,14 @@ form {
     margin-bottom: 20px;
 }
 
-label {
+.labelText {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
     line-height: 23px;
     color: #000000;
+
 }
 
 .errors {
@@ -67,9 +76,10 @@ label {
     font-size: 20px;
     line-height: 23px;
 }
- .sexError {
-     color: #e34343;
- }
+
+.sexError {
+    color: #e34343;
+}
 
 .labelCheckbox {
     margin-bottom: 50px;
@@ -82,12 +92,15 @@ label {
 
 .button {
     cursor: pointer;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -125px;
     border-radius: 0;
     border: none;
     background: #ededed;
     width: 250px;
     height: 40px;
-    margin-left: 50px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
     padding: 10px 0;
@@ -101,4 +114,20 @@ label {
 
 .none {
 
+}
+
+@media (min-width: 1130px) {
+    .form {
+        margin-left: -20px;
+        width: 35%;
+        padding: 50px 70px;
+    }
+}
+
+@media (max-width: 1130px) {
+    .form {
+        width: 65%;
+        margin: 0 auto 50px;
+        padding: 50px 70px;
+    }
 }

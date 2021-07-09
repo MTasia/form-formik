@@ -17,14 +17,15 @@ export const formSlicer = createSlice({
     initialState: defaultState,
     reducers: {
         createDocument(state, action) { // fill out state
+            const {firstName, lastName, email, phone, birthday, sex, rememberMe} = action.payload;
             const newValues = {
-                firstName: action.payload.firstName,
-                lastName: action.payload.lastName,
-                email: action.payload.email,
-                phone: action.payload.phone,
-                birthday: action.payload.birthday,
-                sex: action.payload.sex,
-                rememberMe: action.payload.rememberMe
+                firstName,
+                lastName,
+                email,
+                phone,
+                birthday,
+                sex,
+                rememberMe
             }
             return {
                 ...state,

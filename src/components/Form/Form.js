@@ -1,14 +1,22 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useFormik} from 'formik';
-import PropTypes from 'prop-types';
 import style from './Form.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import {createDocument} from '../../redux/reducer/formReducer/formSlicer';
-import {getValues} from "../../redux/selectors/formSelector"
+import {makeGetValues} from "../../redux/selectors/formSelector"
 import {validationsSchema} from "./validation";
+import {createDocument} from "../../redux/reducer/formReducer/formSlicer";
 
-const Form = ({values, createDocumentForm}) => {
+const Form = () => {
+
+    const values = useSelector(makeGetValues);
+
+    const dispatch = useDispatch();
+
+    const createDocumentForm = useCallback(
+        (newValues) => {dispatch(createDocument(newValues));},
+        []);
+
 
     const formik = useFormik({
         initialValues: values,
@@ -19,10 +27,11 @@ const Form = ({values, createDocumentForm}) => {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form className={style.form} onSubmit={formik.handleSubmit}>
+            <h1 className={style.formTitle}>Form</h1>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <label>First Name</label>
+                    <label className={style.labelText}>First Name</label>
                     {formik.touched.firstName && formik.errors.firstName
                     && <div className={style.errors}>{formik.errors.firstName}</div>}
                 </div>
@@ -37,7 +46,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <label>Last Name</label>
+                    <label className={style.labelText}>Last Name</label>
                     {formik.touched.lastName && formik.errors.lastName
                     && <div className={style.errors}>{formik.errors.lastName}</div>}
                 </div>
@@ -52,7 +61,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <label>Email</label>
+                    <label className={style.labelText}>Email</label>
                     {formik.touched.email && formik.errors.email
                     && <div className={style.errors}>{formik.errors.email}</div>}
                 </div>
@@ -67,7 +76,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <label>Phone</label>
+                    <label className={style.labelText}>Phone</label>
                     {formik.touched.phone && formik.errors.phone
                     && <div className={style.errors}>{formik.errors.phone}</div>}
                 </div>
@@ -82,7 +91,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <label>Birthday</label>
+                    <label className={style.labelText}>Birthday</label>
                     {formik.touched.birthday && formik.errors.birthday
                     && <div className={style.errors}>{formik.errors.birthday}</div>}
                 </div>
@@ -97,7 +106,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
-                    <div>
+                    <div className={style.labelText}>
                         <label
                             className={(formik.touched.sex && formik.errors.sex) ? style.sexError : style.none}
                         >
@@ -105,7 +114,7 @@ const Form = ({values, createDocumentForm}) => {
                         </label>
                     </div>
                     <div>
-                        <label>Male</label>
+                        <label className={style.labelText}>Male</label>
                         <input
                             type="radio"
                             name="sex"
@@ -115,7 +124,7 @@ const Form = ({values, createDocumentForm}) => {
                         />
                     </div>
                     <div>
-                        <label>Female</label>
+                        <label className={style.labelText}>Female</label>
                         <input
                             type="radio"
                             name="sex"
@@ -128,7 +137,7 @@ const Form = ({values, createDocumentForm}) => {
             </div>
             <div className={style.labelCheckbox}>
                 <div className={style.labelErrors}>
-                    <label>Remember me</label>
+                    <label className={style.labelText}>Remember me</label>
                 </div>
                 <input
                     className={style.checkbox}
@@ -149,17 +158,4 @@ const Form = ({values, createDocumentForm}) => {
     );
 };
 
-Form.propTypes = {
-    values: PropTypes.objectOf(PropTypes.any),
-    createDocumentForm: PropTypes.func,
-};
-
-const mapStateToProps = (state) => ({
-    values: getValues(state),
-});
-
-const mapDispatchToProps = {
-    createDocumentForm: createDocument,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default Form;

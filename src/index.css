@@ -1,5 +1,5 @@
 body {
-  min-width: 1200px;
+  min-width: 560px;
 }
 
 :root {
@@ -8,16 +8,30 @@ body {
 }
 
 .wrapper {
+  position: relative;
   margin: 0 auto;
   background: #ededed;
   width: 75%;
-  position: relative;
 }
 
-.forms {
-  display: flex;
-  width: 104%;
-  height: 750px;
-  margin: 383px auto 0;
-  padding-bottom: 650px;
+@media (min-width: 1130px) {
+  .forms {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 650px;
+    padding-top: 380px;
+  }
+}
+
+@media (max-width: 1130px) {
+
+  body {
+    min-width: 560px;
+  }
+
+
+  .forms {
+    padding-bottom: 450px;
+    padding-top: 380px;
+  }
 }
