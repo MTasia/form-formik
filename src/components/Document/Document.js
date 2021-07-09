@@ -2,13 +2,12 @@ import {useSelector} from "react-redux";
 import style from './Document.module.css'
 import {makeGetValues} from "../../redux/selectors/formSelector";
 
-
 const Document = () => {
 
     const values = useSelector(makeGetValues);
 
     return (
-        <div className={style.root}>
+        <div className={style.document}>
             {values.firstName !== "" ?
                 <div>
                     <div className={style.headerTitle}>Your document</div>

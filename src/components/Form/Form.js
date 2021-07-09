@@ -27,7 +27,7 @@ const Form = () => {
     });
 
     return (
-        <form className={style.root} onSubmit={formik.handleSubmit}>
+        <form className={style.form} onSubmit={formik.handleSubmit}>
             <h1 className={style.formTitle}>Form</h1>
             <div className={style.labelInputGroup}>
                 <div className={style.labelErrors}>
